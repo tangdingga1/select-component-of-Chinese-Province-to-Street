@@ -48,7 +48,7 @@ pro_select({
 //wxml中使用
 <Location bind:myevent="{{}}" pro="{{}}" city="{{}}" unit="{{}}" street="{{}}"></Location>
 ```
-![](./src/wechat.jpg '初始化效果')  
+![](./src/wechat.png '初始化效果')  
 其中组件上面你可以传入自己需要的初始化的默认值。
 - pro 代表默认省
 - city 默认市
