@@ -1,0 +1,5 @@
+<view class="main-box">
+    <picker mode="multiSelector" bindchange="changeData" bindcolumnchange="pickerChange" style="color:{{pro_idx?'#323232':''}};" value="{{[pro_idx, city_idx, unit_idx, street_idx]}}" range="{{[pro_rang, city_rang, unit_rang, street_rang]}}">
+        <view class="picker">{{(pro_rang[pro_idx] || '') + ',' + (city_rang[city_idx] || '') + ',' +(unit_rang[unit_idx] || '') + ',' +(street_rang[street_idx] || '')}}</view>
+    </picker>
+</view>

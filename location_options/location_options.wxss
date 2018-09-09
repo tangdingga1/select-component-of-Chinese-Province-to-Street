@@ -1,0 +1,7 @@
+.main-box {
+    height: 100%;
+    line-height: 26rpx;
+    font-family: 'PingFang-SC-Medium';
+    font-size: 28rpx;
+    color: #c8c8c8;
+}
