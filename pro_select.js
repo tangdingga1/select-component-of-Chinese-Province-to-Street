@@ -37,6 +37,7 @@
     pro_select.config = function (long = 4) {
         if (long < 1 || long > 4) {
             throw new Error("config number should greater than 0 or less than 5");
+            return;
         }
         let array = data.init_array;
         let option_arr = new Array(long);
