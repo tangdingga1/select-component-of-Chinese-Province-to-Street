@@ -1,4 +1,4 @@
-const prodata = require('../../utils/GlobalProvinces_extend.js');
+const prodata = require('GlobalProvinces_extend.js');
 
 Component({
     /**
