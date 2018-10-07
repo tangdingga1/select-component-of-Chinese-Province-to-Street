@@ -10,28 +10,32 @@
 (function() {
     // 储存数据组
     const data = {
-        init_array : ['pro_id', 'city_id', 'unit_id', 'street_id']
+        init_array : ['pro_id', 'city_id', 'unit_id', 'street_id'],
+        id_array : []
     }
     // 暴露主函数
     function pro_select(options = {}) {
         // 初始化配置检测
-        data.init_array.forEach((item) => {
+        data.init_array.forEach(item => {
             if (!options[item]) {
                 throw new Error("you should pass a " + item);
             }
         });
         // 循环操作option字段,初始化默认字段
-        data.init_array.forEach((item) => {
+        data.init_array.forEach(item => {
             // 传入操作的select_id,操作的类型(省市区哪一个),默认选中值
             let dom_id = options[item];
+            // 添加类型和对应的id到data的id数组当中
+            data.id_array.push({
+                type : item,
+                dom_id
+            });
             let default_v = options[item.slice(0, -3) + '_v'];
             init_select(dom_id, item, default_v);
             // 绑定选择事件
             select_listener(item, options);
         });
-        
-
-    }
+    };
     // 配置函数区----------------------------
     // 用于自定义初始化省市区街道需要选择
     pro_select.config = function (long = 4) {
@@ -42,7 +46,27 @@
         let option_arr = new Array(long);
         option_arr.fill(undefined);
         data.init_array = option_arr.map((item, index) => array[index]);
-    }
+    };
+    // 用于配置初始值
+    pro_select.default = function(obj = {}) {
+        // 初始化配置检测
+        for (let i in obj) {
+            // 得到对应的select然后增加项
+            data.id_array.forEach((item) => {
+                if (i === item.type) {
+                    let target = document.getElementById(item.dom_id);
+                    console.log(target.firstElementChild);
+                    let option = document.createElement('option');
+                    option.selected = true;
+                    option.innerHTML = obj[i];
+                    target.insertBefore(option, target.firstElementChild);
+                } else {
+                    return;
+                }
+            });
+            
+        }
+    };
     // 方法函数区----------------------------
     // 用于监听选择事件
     function select_listener(type, options) {
